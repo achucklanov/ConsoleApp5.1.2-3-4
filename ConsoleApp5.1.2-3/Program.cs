@@ -2,13 +2,9 @@
 {
     internal class Program
     {
-
-
-
-
-        static string ShowColor()
+        static string ShowColor(string name)
         {
-            Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
+            Console.WriteLine("{0}, напишите свой любимый цвет на английском с маленькой буквы", name);
             var color = Console.ReadLine();
 
             switch (color)
@@ -41,25 +37,35 @@
             }
             return color;
         }
-        
-        public static void Main(string[] args)
+
+        static void Main(string[] args)
         {
-            
             var (name, age) = ("Евгения", 27);
 
-            Console.WriteLine("Мое имя: {0}", name);
+            Console.WriteLine("Моё имя: {0}", name);
             Console.WriteLine("Мой возраст: {0}", age);
 
             Console.Write("Введите имя: ");
             name = Console.ReadLine();
-            Console.Write("Введите возрас с цифрами:");
+            Console.Write("Введите возраст с цифрами:");
             age = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Ваше имя: {0}", name);
             Console.WriteLine("Ваш возраст: {0}", age);
 
-            ShowColor();
+            var favcolors = new string[3];
 
+            for ( int i = 0; i < favcolors.Length; i++ ) 
+            {
+                favcolors[i] = ShowColor(name);
+            }
+
+            Console.WriteLine("Ваши любимые цвета:");
+            foreach( var color in favcolors)
+            { 
+                Console.WriteLine(color);
+            }
+            Console.ReadKey();
 
         }
     }
